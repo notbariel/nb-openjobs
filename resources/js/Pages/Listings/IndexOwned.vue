@@ -28,13 +28,13 @@ const { filters, tags, salaryRange } = toRefs(props);
 
 const listings = ref(props.listings);
 
-const selectedTags = ref(
+const selectedTags = computed(() =>
     filters.value.tags ? split(filters.value.tags, ",") : []
 );
 
-const selectedSalary = ref(filters.value.min_salary ?? 0);
+const selectedSalary = computed(() => filters.value.min_salary ?? 0);
 
-const hideClosed = ref(filters.value.hide_closed ?? false);
+const hideClosed = computed(() => filters.value.hide_closed ?? false);
 
 const activeFilters = computed(() => {
     return {
